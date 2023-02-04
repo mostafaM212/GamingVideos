@@ -1,3 +1,4 @@
+import { SafeURLPipe } from './pipes/safe-url.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,6 @@ import { UploadComponent } from './upload/upload.component';
 import { SharedModule } from '../shared/shared.module';
 import { SingleClipComponent } from './single-clip/single-clip.component';
 import { EditComponent } from './edit/edit.component';
-import { SafeURLPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { SafeURLPipe } from './pipes/safe-url.pipe';
     UploadComponent,
     SingleClipComponent,
     EditComponent,
-    SafeURLPipe
+    SafeURLPipe,
   ],
   imports: [
     CommonModule,
@@ -24,6 +24,6 @@ import { SafeURLPipe } from './pipes/safe-url.pipe';
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [SingleClipComponent   ],
+  exports: [SingleClipComponent],
 })
 export class VideoModule {}

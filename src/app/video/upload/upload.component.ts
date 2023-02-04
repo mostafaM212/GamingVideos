@@ -23,7 +23,7 @@ export interface UploadStatus {
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css'],
-  
+  providers: [],
 })
 export class UploadComponent implements OnDestroy, OnInit {
   /**
@@ -122,7 +122,7 @@ export class UploadComponent implements OnDestroy, OnInit {
       )
       .subscribe({
         next: (urls) => {
-          const [clipURL , screenshotURL]= urls
+          const [clipURL, screenshotURL] = urls;
           let clip: Clip = {
             uid: this.user?.uid as string,
             displayName: this.user?.displayName as string,
@@ -131,7 +131,7 @@ export class UploadComponent implements OnDestroy, OnInit {
             url: clipURL,
             thumbnail: screenshotURL,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            screenshotFileName : `${clipFileName}.png`
+            screenshotFileName: `${clipFileName}.png`,
           };
           this.uploadedClipData = clip;
           this.uploadStatus = {

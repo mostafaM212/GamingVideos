@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ClipService } from '../services/clip.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-clips-list',
@@ -12,7 +12,10 @@ import { ClipService } from '../services/clip.service';
 export class ClipsListComponent implements OnInit, OnDestroy {
   @Input('scrollable') scrollable: boolean = true;
 
-  constructor(public clipService: ClipService) {
+  constructor(
+    public clipService: ClipService,
+    private sanitizer: DomSanitizer
+  ) {
     this.clipService.getClips();
   }
 
@@ -34,5 +37,9 @@ export class ClipsListComponent implements OnInit, OnDestroy {
       window.removeEventListener('scroll', this.onScrollHandler);
     }
     this.clipService.pageClips = [];
+  }
+
+  transform(value: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(value);
   }
 }

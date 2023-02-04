@@ -14,10 +14,8 @@ import { AboutComponent } from './routes/about/about.component';
 import { ClipComponent } from './routes/clip/clip.component';
 import { NotFoundComponent } from './routes/not-found/not-found.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { UserClipsResolver } from './resolvers/user-clips.resolver';
 import { ClipsListComponent } from './clips-list/clips-list.component';
 import { FbTimestampPipe } from './pipes/fb-timestamp.pipe';
-import { SafeURLPipe } from './video/pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +27,6 @@ import { SafeURLPipe } from './video/pipes/safe-url.pipe';
     NotFoundComponent,
     ClipsListComponent,
     FbTimestampPipe,
-    SafeURLPipe
   ],
   imports: [
     BrowserModule,
