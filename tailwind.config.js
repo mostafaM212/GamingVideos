@@ -1,0 +1,10 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: ['src/**/*.{html,ts}'],
+    /**toggled classes that will add dynamically to our html elements */
+    safelist: ['bg-blue-400', 'bg-green-400', 'bg-red-400'],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+}

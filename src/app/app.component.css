@@ -1,0 +1,88 @@
+.app-container{
+  height: 100%;
+  display: flex;
+  padding:  5% 15%;
+  flex-direction: column;
+}
+.app-header{
+  flex-direction: row;
+  display: flex;
+
+  padding: 0px;
+}
+li{
+  list-style: none;
+}
+.app-header-list{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  border-width: 0px 0px;
+  border-bottom: #ccc;
+  border-style: groove;
+  width: 100%;
+}
+.app-header-item {
+  font-size: 17px;
+  font-weight: 700;
+
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+a{
+  color: blue;
+}
+.active{
+  background-color: #ccc;
+  color: #ffff important;
+}
+.header-link-item{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+}
+.header-link-item:hover{
+  background-color: darkgrey;
+}
+.content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 150px;
+  width: 100%;
+}
+.sidebar-list{
+
+  width:100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.sidebar-list-item{
+  display: flex;
+  border-bottom-width: 3px;
+  border-color: #ccc;
+  width:100%;
+  flex : 1;
+  border-style: groove;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.sidebar-list-item:hover{
+  cursor: pointer;
+  background-color: #ccc;
+}
+.screen-container{
+  width: 50%;
+}

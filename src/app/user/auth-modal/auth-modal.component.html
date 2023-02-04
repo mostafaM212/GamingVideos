@@ -1,0 +1,14 @@
+<app-modal modalID="auth" [@opacityAnimation]="this.modalService.isModalOpen('auth')+''">
+  <!-- heading -->
+  <p class="mb-2 text-2xl font-bold text-center" heading>Your Account</p>
+
+  <app-tabs-container >
+    <app-tab tabTitle="Login">
+       <app-login></app-login>
+    </app-tab>
+    <app-tab tabTitle="Register">
+      <app-register></app-register>
+    </app-tab>
+  </app-tabs-container>
+</app-modal>
+

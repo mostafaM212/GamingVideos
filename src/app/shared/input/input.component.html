@@ -1,0 +1,14 @@
+<label class="inline-block mb-2">{{ label }}</label>
+<input [formControl]="control" [type]="inputType" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400" [placeholder]="placeholder" />
+<p *ngIf="control.invalid && control.touched" class="text-sm text-red-600">
+    {{ underText }}
+</p>
+<p *ngIf="control.invalid && control.touched " class="text-sm text-red-600">
+
+    <span *ngIf="control.errors?.['min']">this value is too small</span>
+    <span *ngIf="control.errors?.['max']">this value is too large</span>
+    <span *ngIf="control.errors?.['pattern']">password must be at least 8 characters long.have 1 uppercase letter ,1
+    lowercase letter and 1 number</span>
+    <span *ngIf="control.errors?.['noMatch']">Passwords does not match.</span>
+    <span *ngIf="control.errors?.['emailTaken']">this email is exists please try another one.</span>
+</p>

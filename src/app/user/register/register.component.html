@@ -1,0 +1,33 @@
+<app-alert *ngIf="showAlert" [color]="alertColor">
+    {{alertMessage}}
+</app-alert>
+<!-- Registration Form -->
+<form [formGroup]="RegisterForm" (submit)="onRegisterHandler()">
+    <!-- Name -->
+    <div class="mb-3">
+        <app-input label="Name" [control]="name" placeholder="Enter Name" underText="enter an valid name must have 3 or more characters"></app-input>
+    </div>
+    <!-- Email -->
+    <div class="mb-3">
+        <app-input label="Email" [control]="email" placeholder="Enter Email" underText="please enter an valid email." inputType="email"></app-input>
+    </div>
+    <!-- Age -->
+    <div class="mb-3">
+        <app-input label="Age" [control]="age" placeholder="Enter Your Age" underText="invalid age number" inputType="number"></app-input>
+    </div>
+    <!-- Password -->
+    <div class="mb-3">
+        <app-input label="Password" [control]="password" placeholder="Enter password" inputType="password"></app-input>
+    </div>
+    <!-- Confirm Password -->
+    <div class="mb-3">
+        <app-input label="Confirm Password" [control]="confirmPassword" placeholder="Confirm Your Password" underText="this field is required with have more than 5 characters" inputType="password"></app-input>
+    </div>
+    <!-- Phone Number -->
+    <div class="mb-3">
+        <app-input label="Phone Number" [control]="phoneNumber" placeholder="Enter Your Phone Number" underText="this field is required with have more than 5 characters"></app-input>
+    </div>
+    <button type="submit" class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition" [ngClass]="{ ' hover:bg-indigo-500': RegisterForm.valid }" [disabled]="RegisterForm.invalid && inSubmit">
+    Submit
+  </button>
+</form>

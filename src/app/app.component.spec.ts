@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'GammingApp'`, () => {
+  it(`should have as title 'angular-route-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('GammingApp');
+    expect(app.title).toEqual('angular-route-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('GammingApp app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-route-app app is running!');
   });
 });

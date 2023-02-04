@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "clips-50802": {
+      "hosting": {
+        "GammingApp": [
+          "clips-50802"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "clips-50802"
+  }
+}

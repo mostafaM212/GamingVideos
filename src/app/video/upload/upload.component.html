@@ -1,0 +1,117 @@
+<!-- Main Content -->
+<section class="container mx-auto my-8 bg-secondary p-6">
+  <div class="rounded relative flex flex-col">
+    <div class="font-bold mb-6">Upload Video</div>
+    <div *ngIf="uploadingPercentage > 0">
+      <div class="flex justify-between">
+        <p class="text-indigo-400">progress</p>
+        <p class="text-indigo-400">{{ uploadingPercentage.toFixed(2) }}%</p>
+      </div>
+      <progress
+        style="width: 100%; border-color: #0052d4"
+        [value]="uploadingPercentage / 200"
+      ></progress>
+    </div>
+    <app-alert *ngIf="uploadStatus !== null" [color]="uploadStatus.color">{{
+      uploadStatus.message
+    }}</app-alert>
+    <ng-container>
+      <span
+        *ngIf="!ffmpegService.isReady; else uploadEditorCtr"
+        class="material-icon text-center text-6xl p-8 animate-spin"
+      >
+        settings
+      </span>
+    </ng-container>
+
+    <ng-template #uploadEditorCtr>
+      <!-- Upload Dropbox -->
+      <ng-container *ngIf="file === null">
+        <div
+          app-event-blocker
+          (dragend)="isDragover = false"
+          (dragover)="isDragover = true"
+          (dragenter)="isDragover = true"
+          (dragleave)="isDragover = false"
+          (mouseleave)="isDragover = false"
+          (drop)="onDropHandler($event)"
+          class="w-full px-10 py-40 rounded text-center cursor-pointer border border-dashed border-gray-400 transition duration-500 hover:text-white hover:bg-indigo-400 hover:border-indigo-400 hover:border-solid text-xl"
+          [ngClass]="{
+            'bg-indigo-400 border-indigo-400 border-solid': isDragover
+          }"
+        >
+          <h5>Drop your file here (mp4 only!)</h5>
+        </div>
+        <input
+          type="file"
+          class="my-2"
+          #input
+          (change)="onDropHandler(input)"
+        />
+      </ng-container>
+
+      <!-- Video Editor -->
+      <div>
+        <!-- Form -->
+        <form #form="ngForm" (submit)="onUploadHandler(form)">
+          <!-- Screenshots -->
+          <h2 class="mb-4 text-xl">Select a Thumbnail</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div
+              *ngFor="let screenshot of screenshots"
+              class="border-8 cursor-pointer border-transparent"
+              (click)="selectedImagePath = screenshot"
+              [ngClass]="{
+                'border-green-400': selectedImagePath === screenshot,
+                'border-transparent' : selectedImagePath !== screenshot 
+              }"
+            >
+              <img [src]="screenshot | safeURL" />
+            </div>
+          </div>
+
+          <!-- Title -->
+          <div class="mt-4">
+            <label class="block text-xl mb-4">Title</label>
+            <input
+              type="text"
+              name="title"
+              class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+              [(ngModel)]="fileName"
+              #title="ngModel"
+              required
+              minlength="5"
+            />
+            <p
+              class="text-red-600 text-sm"
+              *ngIf="title.invalid && title.touched"
+            >
+              this field is required with at least 5 characters.
+            </p>
+          </div>
+
+          <div class="mt-4 text-right">
+            <button
+              type="submit"
+              [disabled]="form.invalid"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+              [ngClass]="{
+                'cursor-not-allowed hover:bg-indigo-600':
+                  form.invalid || ffmpegService.isRunning
+              }"
+            >
+              <span *ngIf="!ffmpegService.isRunning; else spinning"
+                >Publish</span
+              >
+              <ng-template #spinning>
+                <span class="material-icons text-center animate-spin"
+                  >uploading</span
+                >
+              </ng-template>
+            </button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</section>
